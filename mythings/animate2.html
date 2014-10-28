@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  function myFunction() {
+  document.getElementById("date").innerHTML = Date();
+}
+</script>
+
+<noscript> Konoyas</noscript>
+<title>Char Wars 0.0123456789876543210</title>
+</head>
+<body>
+<canvas id="Alif" width="440" height="220" style="border:1px solid #000000;"></canvas>
+<canvas id="Bait" width="440" height="220" style="border:1px solid #000000;"></canvas>
+<p>Click Date to display current day, date, and time.</p>
+
+<button type="button" onclick="myFunction()">Date</button>
+
+<p id="date"></p>
+<script>
+var c = document.getElementById("Alif"),
+    zero = c.getContext("2d"),
+    time = 0;
+
+    d = document.getElementById("Bait"),
+    one = d.getContext("2d"), t2 = 0; 
+
+
+var render = function(){
+  zero.clearRect(0, 0, c.width, c.height),
+  one.clearRect(0, 0, d.width, d.height);
+// Create gradient
+var grd = zero.createRadialGradient(440,1,0,1,0,440);
+    grd.addColorStop(0,"blue");
+    grd.addColorStop(1,"pink");
+
+// Fill with gradient
+
+
+var i, down, over, sin,  
+    wide = 5, tall = 5,
+    numRectangles = 9;
+
+    dow = t2 / 2, 
+    ove = t2, 
+    wid = 66, tal = 44;
+
+for(i = 0; i < numRectangles; i++){
+    sin = Math.sin(i /20 * time) / 2 + 0.5;
+    down = sin * (c.width - wide); //Math.random()
+    over = i * 6;
+    zero.font = "50px Arial";
+    zero.fillText("0", down, over);
+    zero.fillStyle = grd;
+    zero.fillRect(down, over, wide, tall);
+    one.fillStyle = "red";
+    one.font = "60px Arial";
+    one.fillText("1", over, down);
+    zero.font = "130px Unicode";
+    
+
+    
+    
+  }
+//Comment
+one.shadowBlur=20;
+zero.shadowColor="black";
+zero.shadowBlur=20;
+one.shadowColor="black";
+zero.fillText(".\u05D0\u05E4\u05E1", 180, t2);
+zero.fillText(".0", 180, 140);
+one.font = "130px Unicode";
+one.fillText("\u05D0", 280, 140);
+zero.font = "26px Arial";
+zero.fillText("Point zero", t2, 140);
+zero.fillText("0", 440, -t2);
+
+one.fillStyle = "orange";
+one.fillRect(ove, dow, wid, tal);
+one.font = "130px Unicode";
+one.fillStyle = "yellow";
+one.fillText("\u05D0", ove, dow);
+time += .51;
+t2 += 13.8;
+}
+
+
+setInterval(render, 8);
+
+
+</script>
+</body>
+</html>

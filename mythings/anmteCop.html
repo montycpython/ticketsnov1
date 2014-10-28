@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  function myFunction() {
+  document.getElementById("date").innerHTML = Date();
+}
+</script>
+
+<noscript> Konoyas</noscript>
+<title>Char Wars 0.0123456789876543210</title>
+</head>
+<body>
+<canvas id="Alif" width="440" height="440" style="border:1px solid #000000;"></canvas>
+<canvas id="Bait" width="440" height="220" style="border:1px solid #000000;"></canvas>
+<p>Click Date to display current day, date, and time.</p>
+
+<button type="button" onclick="myFunction()">Date</button>
+
+<p id="date"></p>
+<script>
+// example code from mr doob : http://mrdoob.com/lab/javascript/requestanimationframe/
+
+var canvas, context, toggle;
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.font = "30px Arial";
+ctx.fillText("Hello World",10,50);
+
+init();
+animate();
+
+function init() {
+
+    canvas = document.createElement( 'canvas' );
+    canvas.width = 512;
+    canvas.height = 512;
+
+    context = canvas.getContext( '2d' );
+
+    document.body.appendChild( 'canvas' );
+
+}
+
+
+
+}
+
+function draw() {
+
+    var time = new Date().getTime() * 0.002;
+    var x = Math.sin( time ) * 192 + 256;
+    var y = Math.cos( time * 0.9 ) * 192 + 256;
+    toggle = !toggle;
+
+    context.fillStyle = 'rgb(200,200,20)' :  'rgb(20,20,200)';
+    context.beginPath();
+    context.arc( x, y, 10, 0, Math.PI * 2, true );
+    context.closePath();
+    context.fill();
+
+}
+
+setInterval(9);
+
+</script>
+</body>
+</html>

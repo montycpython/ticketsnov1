@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  function myFunction() {
+  document.getElementById("date").innerHTML = Date();
+}
+</script>
+
+<noscript> Konoyas</noscript>
+<title>Char Wars 0.0123456789876543210</title>
+</head>
+<body>
+<canvas id="Alif" width="440" height="220" style="border:1px solid #000000;"></canvas>
+<canvas id="Bait" width="440" height="220" style="border:1px solid #000000;"></canvas>
+<canvas id="Gimel" width="440" height="220" style="border:1px solid #000000;"></canvas>
+<p>Click Date to display current day, date, and time.</p>
+
+<button type="button" onclick="myFunction()">Date</button>
+
+<p id="date"></p>
+<script>
+var c = document.getElementById("Alif"),
+    zero = c.getContext("2d"),
+    time = 0;
+
+    d = document.getElementById("Bait"),
+    one = d.getContext("2d"), t2 = 0;
+    
+    e = document.getElementById("Gimel"),
+    two = e.getContext('2d'), t3 = 0;
+
+
+var render = function(){
+  zero.clearRect(0, 0, c.width, c.height),
+  one.clearRect(0, 0, d.width, d.height),
+  two.clearRect(0, 0, e.width, e.height);
+// Create gradient
+
+var grd = zero.createRadialGradient(440,1,0,1,0,440);
+    grd.addColorStop(0,"blue");
+    grd.addColorStop(1,"pink");
+
+// Fill with gradient
+
+
+var i, down, over, sin,  
+    wide = 5, tall = 5,
+    numRectangles = 9;
+
+    dow = t2 / 2, 
+    ove = t2, 
+    wid = 66, tal = 44;
+
+for(i = 0; i < numRectangles; i++){
+    sin = Math.sin(i /20 * time) / 2 + 0.5;
+    down = sin * (c.width - wide); //Math.random()
+    over = i * 6;
+    zero.font = "50px Arial";
+    zero.fillText("0", down, over);
+    zero.fillStyle = grd;
+    zero.fillRect(down, over, wide, tall);
+    one.fillStyle = "red";
+    one.font = "60px Arial";
+    one.fillText("1", over, down);
+    zero.font = "130px Unicode";
+    
+
+    
+    
+  }
+  for(var j=0;j<4;j++){
+      for(var k=0;k<3;k++){
+        two.beginPath();
+        var x              = 25+k*50;               // x coordinate
+        var y              = 25+j*50;               // y coordinate
+        var radius         = 10;                    // Arc radius
+        var startAngle     = 26;                     // Starting point on circle
+        var endAngle       = Math.PI+(Math.PI*j)/2; // End point on circle
+        var anticlockwise  = j%2==0 ? false : true; // clockwise or anticlockwise
+
+        two.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+
+        if (j>1){
+          two.fill();
+        } else {
+          two.stroke();
+        }
+      }
+    }
+//Comment
+one.shadowBlur=20;
+zero.shadowColor="black";
+zero.shadowBlur=20;
+one.shadowColor="black";
+zero.fillText(".\u05D0\u05E4\u05E1", 180, t2);
+zero.fillText(".0", 180, 140);
+one.font = "130px Unicode";
+one.fillText("\u05D0", 280, 140);
+zero.font = "26px Arial";
+zero.fillText("Point zero", t2, 140);
+zero.fillText("0", 440, -t2);
+
+one.fillStyle = "orange";
+one.fillRect(ove, dow, wid, tal);
+one.font = "130px Unicode";
+one.fillStyle = "yellow";
+one.fillText("\u05D0", ove, dow);
+two.beginPath();
+two.moveTo(75,50);
+two.lineTo(100,75);
+two.lineTo(100,25);
+two.fill();
+
+two.beginPath();
+two.arc(75,75,50,0,Math.PI*2,true); // Outer circle
+two.moveTo(110,75);
+two.arc(75,75,35,0,Math.PI,false);   // Mouth (clockwise)
+two.moveTo(65,65);
+two.arc(60,65,5,0,Math.PI*2,true);  // Left eye
+two.moveTo(95,65);
+two.arc(90,65,5,0,Math.PI*2,true);  // Right eye
+two.stroke();
+time += .51;
+t2 += 13.8;
+t3 += 13;
+
+    two.beginPath();
+    two.moveTo(75,25);
+    two.quadraticCurveTo(25,25,25,62.5);
+    two.quadraticCurveTo(25,100,50,100);
+    two.quadraticCurveTo(50,120,30,125);
+    two.quadraticCurveTo(60,120,65,100);
+    two.quadraticCurveTo(125,100,125,62.5);
+    two.quadraticCurveTo(125,25,75,25);
+    two.stroke();
+    
+    two.beginPath();
+    two.moveTo(75,40);
+    two.bezierCurveTo(150,74,140,50,100,55);
+    two.bezierCurveTo(40,50,40,125,40,62.5);
+    two.bezierCurveTo(40,160,80,404,150,120);
+    two.bezierCurveTo(220,204,260,160,230,62.5);
+    two.bezierCurveTo(260,125,260,50,200,55);
+    two.bezierCurveTo(170,50,150,74,150,40);
+    two.fill();
+}
+
+
+setInterval(render, 8);
+
+
+</script>
+
+</body>
+</html>
