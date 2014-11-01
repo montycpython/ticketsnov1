@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" contents="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" contents="Montavious">
+    <title>RealTicket App (Python)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+   <script language="javascript">
+function update_qrc_img() {
+image = document.getElementById('qrcode_img');
+data = document.getElementById('qrcode_text').value;
+image.src = '/qr?text=' + encodeURIComponent(data);
+}
+   </script>
+    </head>
+  <body>
+    <header>
+      <div class="navbar-inverse navbar-static-top">
+          <div class="container">
+              <a class="navbar-brand" href="/">RealTicket&trade; <em>Box Office</em></a>
+              <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <div class="collapse navbar-collapse navHeaderCollapse">
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="active"><a href="/"><center>Home</center></a></li>
+                  <li><a href="/realticket"><center>Welcome</center></a></li>
+                  <li><a href="/log"><center>Log In</center></a></li>
+              </ul>
+          </div>
+      </div>
+   </div>
+    </header>
+    <div class='container'>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  </body>
+</html>

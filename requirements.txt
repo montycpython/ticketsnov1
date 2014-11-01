@@ -1,0 +1,18 @@
+Requirements:
+
+python
+virtualenv
+pip
+recaptcha-client 1.0.6
+flask
+flask-login
+flask-openid
+flask-mail
+flask-sqlalchemy
+sqlalchemy-migrate
+flask-whooshalchemy
+flask-wtf
+flask-babel
+quess_language
+flipflop
+coverage

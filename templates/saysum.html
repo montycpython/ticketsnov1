@@ -1,0 +1,22 @@
+{% extends 'template.html' %}
+{% block content %}
+<h2><center>RealTicket&trade; Comments</center></h2>
+    {% if error %}
+    <p class=error><center><strong>ERROR!!!</strong> {{ error }} </center>    
+    {% endif %}
+    <center>
+    {% for message in get_flashed_messages() %}
+    <div class=flash>
+        <center>{{ message }}</center>
+    </div> <br />
+    <form method="post" action="/">
+        <p>
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name(size=20) }}
+        </p>
+        <p>
+        <input type="submit" value="Add Comment" />
+        </p>
+    </form>
+    <p><center>Click<a href="/realticket"> here</a> for more information.</center></p>
+{% endblock %}
