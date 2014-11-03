@@ -1,0 +1,23 @@
+{% extends 'template.html' %}
+{% block content %}
+<h2><center>RealTicket&trade; Log In</center></h2>
+    {% if error %}
+    <p class=error><center><strong>ERROR!!!</strong> {{ error }} </center>    
+    {% endif %}
+    <center>
+    {% for message in get_flashed_messages() %}
+    <div class=flash>
+        <center>{{ message }}</center>
+    </div> <br />
+    {% endfor %}
+    <form action="" method=post>
+        <dl>
+            <dt>Operator Name:
+            <dd><input type=text name=username value='{{ request.form.username }}' />
+            <dt>Current Password:
+            <dd><input type=password name=password value='{{ request.form.password }}'/>
+        </dl>
+        <p><input type=submit value=LogIn />
+    </form></center>
+    <p><center>Click<a href="/realticket"> here</a> for more information.</center></p>
+{% endblock %}

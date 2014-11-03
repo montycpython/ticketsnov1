@@ -1,0 +1,15 @@
+{% extends 'template.html'%}
+{% block content %}
+<br />
+<div class="jumbotron">
+<h2>Welcome. You are now logged in.</h2>
+<br /><br />
+{% for message in get_flashed_messages() %}
+    <div class=flash>
+        <center><p><strong>{{ message }}</strong></p></center>
+    </div> <br />
+{% endfor %}
+<p>Play with the <a class='btn btn-info' href='/qrc'>QR Code Generator</a> See how it will work for our app.</p>
+<a class='btn btn-danger' href='/logout'>Log Out</a>
+</div>
+{% endblock %}
