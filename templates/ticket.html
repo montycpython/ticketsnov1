@@ -1,0 +1,67 @@
+{% extends 'oct16.html' %}
+{% block content %}
+<div class="container"><br />
+    <center>
+	<div class="jumbotron"><h1><span class="glyphicon glyphicon-qrcode"></span> 
+{% for message in get_flashed_messages() %}
+    <div class=flash>
+        <center><p><strong>{{ message }}</strong></p></center>
+    </div> <br />
+{% endfor %} 
+            <span class="glyphicon glyphicon-paperclip"></span></h1>
+	<p><span class="glyphicon glyphicon-lock"></span> {finalticket_paragraph}</p>
+	<a href ="#" class="btn btn-default">Print Ticket <span class="glyphicon glyphicon-print"></span></a>
+	<a href ="#" class="btn btn-info">Mail Ticket <span class="glyphicon glyphicon-envelope"></span></a>
+	<a href ="#" class="btn btn-success">Email Ticket <span class="glyphicon glyphicon-send"></span></a><br />
+<cite>Note: This is the final digital ticket product for the customer to receive after they confirm their email address &amp; their credit card is successfully, as in passed-my-unbreakable-validation-tests-to-put-an-end-to the term 'chargeback' concerning this endeavor, charged.</cite>	
+	
+	<!--<a href ="#" class="btn btn-danger">Close Event</a>--></center>
+	</div>	
+</div><br />
+
+
+<center>
+<span class="glyphicon glyphicon-eye-open"></span>    
+<span class="glyphicon glyphicon-eye-open"></span><br />
+            <span class="glyphicon glyphicon-tasks"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-credit-card"></span>
+            <span class="glyphicon glyphicon-gift"></span>
+            <span class="glyphicon glyphicon-stats"></span>
+            <span class="glyphicon glyphicon-sort"></span>
+            <span class="glyphicon glyphicon-flash"></span>
+            <span class="glyphicon glyphicon-transfer"></span>
+            <span class="glyphicon glyphicon-export"></span>
+            <span class="glyphicon glyphicon-phone-alt"></span>
+            <span class="glyphicon glyphicon-phone"></span>
+            <span class="glyphicon glyphicon-heart-empty"></span>
+            <span class="glyphicon glyphicon-link"></span>
+            <span class="glyphicon glyphicon-globe"></span>
+            <span class="glyphicon glyphicon-paperclip"></span>
+            <span class="glyphicon glyphicon-deciduous"></span>
+            <span class="glyphicon glyphicon-random"></span>
+            <span class="glyphicon glyphicon-fire"></span>
+            <span class="glyphicon glyphicon-leaf"></span>
+            <span class="glyphicon glyphicon-thumbs-up"></span>
+            <span class="glyphicon glyphicon-eye-close"></span>
+            <span class="glyphicon glyphicon-certificate"></span>
+            <span class="glyphicon glyphicon-warning-sign"></span>
+            <span class="glyphicon glyphicon-ok-circle"></span>
+            <span class="glyphicon glyphicon-tint"></span>
+            <span class="glyphicon glyphicon-paperclip"></span>
+            <span class="glyphicon glyphicon-print"></span>
+            <span class="glyphicon glyphicon-picture"></span>
+            <span class="glyphicon glyphicon-trash"></span>
+            <span class="glyphicon glyphicon-road"></span>
+            <span class="glyphicon glyphicon-user"></span>
+            <span class="glyphicon glyphicon-asterick"></span>
+            <span class="glyphicon glyphicon-glass"></span>
+            <span class="glyphicon glyphicon-music"></span>
+            <span class="glyphicon glyphicon-lock"></span>
+            <span class="glyphicon glyphicon-flag"></span>
+            <span class="glyphicon glyphicon-ban-circle"></span>
+            <span class="glyphicon glyphicon-inbox"></span>
+            <span class="glyphicon glyphicon-envelope"></span>
+            <span class="glyphicon glyphicon-film"></span>
+</center>
+{% endblock %}

@@ -2,14 +2,19 @@
 {% block content %}
 <br />
 <div class="jumbotron">
-<h2>Welcome. You are now logged in.</h2>
+    <h2><span class="glyphicon glyphicon-user"></span> Welcome. You are now logged in. 
+        <span class="glyphicon glyphicon-pushpin"></span></h2>
 <br /><br />
 {% for message in get_flashed_messages() %}
     <div class=flash>
         <center><p><strong>{{ message }}</strong></p></center>
     </div> <br />
 {% endfor %}
-<p>Play with the <a class='btn btn-info' href='/qrc'>QR Code Generator</a> See how it will work for our app.</p>
-<a class='btn btn-danger' href='/logout'>Log Out</a>
+<p>Play with the <a class='btn btn-info' href='/qrc'>
+    <span class="glyphicon glyphicon-qrcode"></span> QR Code Generator</a> See how it will work for our app.</p>
+<p>Play with the <a class='btn btn-success' href='/purchaseprocess'>
+    <span class="glyphicon glyphicon-transfer"></span> Purchase Process</a> See how it will work for our app.</p>
+<a class='btn btn-danger' href='/logout'>
+    <span class="glyphicon glyphicon-stop"></span> Log Out</a>
 </div>
 {% endblock %}

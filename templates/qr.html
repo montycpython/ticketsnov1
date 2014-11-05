@@ -2,15 +2,15 @@
 {% block content%}
 <br />
 <div class="jumbotron">
-<center>
+    <center><p><span class="glyphicon glyphicon-qrcode"></span></p>
     <h2>An example of QR Codes (Quick Response Code) Technology:</h2>
-    <h1>Enter text or numbers into field...</h1>
+    <h3>Enter text or numbers into field...</h3>
     <input id="qrcode_text" type="text" name="text" onchange="update_qrc_img();" /><br />
     <br />
-    <img id="qrcode_img" src="/qr/test" />
+    <img id="qrcode_img" src="/qr/test" alt="" />
     <h3>Now just press enter</h3>
 </center>
-<p><a class="btn btn-warning" href="/hello">Go Back</a></p>
-<p><a class="btn btn-danger" href="/logout">Log Out</a></p>
+<p><a class="btn btn-warning" href="/hello"><span class="glyphicon glyphicon-step-backward"></span>Go Back</a></p>
+<p><a class="btn btn-danger" href="/logout"><span class="glyphicon glyphicon-stop"></span> Log Out</a></p>
 </div>
 {% endblock %}

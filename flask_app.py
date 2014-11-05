@@ -70,11 +70,14 @@ def ohello():
 @app.route('/log', methods=['GET', 'POST'])
 def log():
     error = None
+    success = None
     if request.method == 'POST':
         if request.form['username'] not in wigs or request.form['password'] not in passpalabras:
             error = "Incorrect credentials. Please, try again."
         else:
             session['logged_in'] = True
+            success = str(request.form['username'])
+            flash('You are now signed in as %s'% success)
             return redirect(url_for('ohello'))
     return render_template('log.html', error=error)
 
@@ -100,6 +103,50 @@ def qr():
     img = qr.make_image()
     img.save(data, 'png')
     return send_file(StringIO.StringIO(data.getvalue()), mimetype='image/png')
+
+@app.route('/purchaseprocess')
+@login_required
+def purpro():
+    return render_template('nov3.html')
+
+@app.route('/ticketpurchase')
+@login_required
+def tikpur():
+    return render_template('realticketdaemon.html')
+
+@app.route('/ticket')
+@login_required
+def Rticket():
+    return render_template('ticket.html')
+
+@app.route('/RealTicket', methods=['GET','POST'])
+@login_required
+def realticket():
+    nom = None
+    hom = None
+    zom = None
+    fom = None
+    eom = None
+    com = None
+    vom = None
+    tom = None
+    qom = None
+    pom = None
+    som = None
+    if request.method == 'POST':
+        nom = request.form['cname']
+        hom = request.form['caddress']
+        zom = request.form['zcode']
+        fom = request.form['cphone']
+        eom = request.form['cemail']
+        com = request.form['cccnumber']
+        vom = request.form['ccvc']
+        tom = request.form['ticket']
+        qom = request.form['tquantity']
+        pom = request.form['cpin']
+        som = request.form['dsignature']
+        flash('You entered: Name:%s Address:%s ZipCode:%s Phone:%s Email:%s Card Number:%s Cvc:%s Ticket:%s Quantity:%s Pin:%s'% (nom, hom, zom, fom, eom, com, vom, tom, qom, pom))
+        return redirect(url_for('Rticket'))
 
 if __name__ == '__main__':
     app.run()

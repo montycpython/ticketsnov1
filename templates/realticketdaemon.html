@@ -1,77 +1,67 @@
-<!DOCTYPE html>
-<html>
-<head>
-<script language="javascript" src="oct16.js"></script>
-<title>
-RealConsole&trade;
-</title>
-<meta charset="utf-8" />
-<!--meta http-equiv="X-UA-Compatible" contents="IE=edge"-->
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" contents="" />
-<meta name="author" contents="RealMaster Montavious" />
-<link href="dist/css/bootstrap.min.css" rel="stylesheet" />
-<link href="dist/css/carousel.css" rel="stylesheet" />
-</head>
-
-<body onload="checkCookie()">
-<center><h1>RealTicket&trade;</h1></center>
-
-
-<div class="navbar-inverse navbar-static-top">
-	<div class="container"> 
-	                <a href="#" class="navbar-brand">RealTicket&trade; Console</a> 
-	        <button class="navbar-toggle" data-toggle="collapse"data-target=".navHeaderCollapse"> 
-	                        <span class="icon-bar"></span> 
-	                        <span class="icon-bar"></span> 
-	                        <span class="icon-bar"></span> 
-	                        <span class="icon-bar"></span> 
-	         </button> 
-	                <div class="collapse navbar-collapse navHeaderCollapse">
-						 <ul class="nav navbar-nav navbar-right">
-						  <li class="active"><a href="#">Monitor</a></li>
-						  <li><a href="#">Comments</a></li>
-						  <li><a href="#">Transactions</a></li> 
-						  <li><a href="#">Venue</a></li> 
-						  <li><a href="#">Revenue</a></li>
-						 </ul> 
-					</div> 
-	     </div> 
-</div>
-
-<div class="container">
-    <center><div class="jumbotron"><h1><button class='danger'>Unnamed!?</button> 1<button class='danger'>Unnamed!?</button>Login10/17/14 17:24:59</h1>
-	<p>Welcome to The Console.</p>
-	<a href ="#" class="btn btn-default">Refresh Monitor</a>
-	<a href ="#" class="btn btn-warning">Create Event</a>
-	<a href ="#" class="btn btn-info">Modify Event</a>
+{% extends 'oct16.html' %}
+{% block content %}
+<h2><center>Purchase RealTickets&trade;</center></h2>
+    {% if error %}
+    <p class=error><center><strong>ERROR!!!</strong> {{ error }} </center>    
+    {% endif %}
+    <center>
+    {% for message in get_flashed_messages() %}
+    <div class=flash>
+        <center>{{ message }}</center>
+    </div> <br />
+    {% endfor %}
+<div class="container"><br />
+    <center><span class="glyphicon glyphicon-shopping-cart"></span>
+        <div class="jumbotron" ng-app=""><h1>
+        <span class="glyphicon glyphicon-credit-card"></span><br />
+            <span class="glyphicon glyphicon-lock"></span> <span class="glyphicon glyphicon-certificate"></span></h1>
+	<p><span class="glyphicon glyphicon-credit-card"></span> {baalbalan_paragraph}
+    <form action="/RealTicket" method=post>
+        <legend>Purchaser's Info</legend>
+        <dl>
+            <dt><label ng-bind="Name" for=cname>Cardholder's Name:
+                <dd><input type=text name=cname ng-model="Name" placeholder="Cardholder's Name" title="Name must match Cardholder's" value='{{ request.form.cname }}' required autofocus /></label>
+            <dt><label for=caddress>Cardholder's Address:
+                <dd><input type=text name=caddress placeholder="123 Amity St, College Park, GA" title="i.e. Apt 4b 123 Somewhere St, City, State" value='{{ request.form.caddress }}' required /></label>
+            <dt><label for=zcode>Zip Code:
+                <dd><input type=text name=zcode placeholder="30349" maxlength=5 size=5 pattern="[0-9]{5}" value='{{ request.form.zcode }}' required /><label>
+            <dt>Phone #:
+            <dd><input type=text name=cphone placeholder="404-555-555" maxlength=12 size=12 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="i.e. 404-555-5555" value='{{ request.form.cphone }}' required />
+            <dt>Email Address:
+            <dd><input type=text name=cemail placeholder="anyemail@anymail.com" value='{{ request.form.cemail }}' required />
+            <dt>Credit Card #:
+            <dd><input type=text name=cccnumber placeholder="xxxx-xxxx-xxxx-xxxx" title="i.e. xxxx-xxxx-xxxx-xxxx" maxlength=19 size=19 pattern=[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4} value='{{ request.form.cccnumber }}' required />
+            <dt>CVC:
+            <dd><input type=text name=ccvc maxlength=3 size=3 placeholder=111 pattern=[0-9]{3} value='{{ request.form.ccvc }}' required />
+            <dt>Select Seating Level:
+            <dd><select name=ticket  value='{{ request.form.ticket }}' required>
+                <option>($100)Reserved Table Seat</option>
+                <option>($50)Reserved Seat Rows A-D</option>
+                <option>($50)Reserved Seat Rows E-H</option>
+                <option>($50)Reserved Seat Rows I-L</option>
+                <option>($50)GA WC Reserved Row M</option>
+                <option>($35)General Admission Lawn</option>
+                <option>($35)GA WC Accessible Lawn</option>
+                </select></dd>
+            <dt>Quantity:
+            <dd><input type=text name=tquantity maxlength=1 size=1 placeholder=2 pattern=[0-8]{1} value='{{ request.form.tquantity }}'required >
+            <dt>Set Security PIN:
+            <dd><input type=text name=cpin maxlength=4 size=4 pattern="[0-9]{4}" value='{{ request.form.cpin }}' required />
+        </dl>
+<label for=dsignature>Digital Signature:
+    <input type=checkbox name=dsignature value='{{ request.form.dsignature }}' required /></label>
+<br />
+<a class="btn btn-warning" href="/purchaseprocess"><span class="glyphicon glyphicon-step-backward"></span>Go Back</a>
+<a href ="#" class="btn btn-default">Help <span class="glyphicon glyphicon-eye-close"></span></a><br />
+	<button type="submit" value="" class="btn btn-success">Purchase Ticket/s 
+        <span class="glyphicon glyphicon-shopping-cart"></span></button>
+	<a href ="#" class="btn btn-danger">Reset Form <span class="glyphicon glyphicon-trash"></span></a><br />
+    </form></center>
+    <p><center>Please,<a href="/realticket"> </a> try it out!</center></p>
+    </p>
+	<cite>Note: The Event will be determined based on how the customer is redirected from wolfcreekamphitheater.com</cite>
+	
 	<!--<a href ="#" class="btn btn-danger">Close Event</a>--></center>
 	</div>	
-</div>
-<!--
-<div class="item">
-  <img src="..." alt="...">
-  <div class="carousel-caption">
-    <h3>...</h3>
-    <p>...</p>
-  </div>
-</div>
-
-<form action="../../cgi-bin/oct15.cgi" method="post">
-<fieldset>
-	<legend>RealTicket&trade; Login</legend>
-	<label>Operator Name: <input type="text" name="O_Name" width=33></label><br /><br />
-	<label>Operator Password: <input type="password" name="Real_Pass" width=33></label><br /><br />
-	<input type="submit" value="Login"><br />
-</fieldset>
-</form>-->
-<div class="nav-bar navbar-default navbar-fixed-bottom"> 
-        <div class="container"> 
-                <p class="navbar-text pull-left">Built By RealMaster</p> 
-                <a class="navbar-btn btn-success btn pull-right">Follow on Instagram</a> 
-        </div> 
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="dist/js/bootstrap.min.js"></script>
-</body>
-</html>
+</div><br />
+{% endblock %}

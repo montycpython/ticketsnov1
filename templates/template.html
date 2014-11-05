@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" contents="Montavious">
     <title>RealTicket App (Python)</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/bootstrap.min.css') }}" />
    <script language="javascript">
 function update_qrc_img() {
 image = document.getElementById('qrcode_img');
@@ -19,7 +19,8 @@ image.src = '/qr?text=' + encodeURIComponent(data);
     <header>
       <div class="navbar-inverse navbar-static-top">
           <div class="container">
-              <a class="navbar-brand" href="/">RealTicket&trade; <em>Box Office</em></a>
+              <a class="navbar-brand" href="/">RealTicket&trade; 
+                  <span class='glyphicon glyphicon-cloud-upload'></span> <em>Cloud</em></a>
               <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
@@ -28,9 +29,12 @@ image.src = '/qr?text=' + encodeURIComponent(data);
               </button>
               <div class="collapse navbar-collapse navHeaderCollapse">
               <ul class="nav navbar-nav navbar-right">
-                  <li class="active"><a href="/"><center>Home</center></a></li>
-                  <li><a href="/realticket"><center>Welcome</center></a></li>
-                  <li><a href="/log"><center>Log In</center></a></li>
+                  <li class="active"><a href="/"><center>
+                          <span class="glyphicon glyphicon-home"></span> Home</center></a></li>
+                  <li><a href="/realticket"><center>
+                          <span class="glyphicon glyphicon-globe"></span> Welcome</center></a></li>
+                  <li><a href="/log"><center>
+                          <span class="glyphicon glyphicon-phone"></span> Log In</center></a></li>
               </ul>
           </div>
       </div>
@@ -41,6 +45,6 @@ image.src = '/qr?text=' + encodeURIComponent(data);
         {% endblock %}
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='dist/js/bootstrap.min.js') }}"></script>
   </body>
 </html>
