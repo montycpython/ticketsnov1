@@ -122,6 +122,12 @@ def Rticket():
 @app.route('/RealTicket', methods=['GET','POST'])
 @login_required
 def realticket():
+        flash("You entered: Name:%s Address:%s ZipCode:%s Phone:%s Email:%s Card Number:%s Cvc:%s Ticket:%s Quantity:%s Pin:%s <img id='qrcode_img' src='/qr/test' alt='' />"% (nom, hom, zom, fom, eom, com, vom, tom, qom, pom))
+        return redirect(url_for('Rticket'))
+
+@app.route('/tqr', methods=['GET','POST'])
+@login_required
+def tqr():
     nom = None
     hom = None
     zom = None
@@ -145,8 +151,22 @@ def realticket():
         qom = request.form['tquantity']
         pom = request.form['cpin']
         som = request.form['dsignature']
-        flash('You entered: Name:%s Address:%s ZipCode:%s Phone:%s Email:%s Card Number:%s Cvc:%s Ticket:%s Quantity:%s Pin:%s'% (nom, hom, zom, fom, eom, com, vom, tom, qom, pom))
-        return redirect(url_for('Rticket'))
+        data = StringIO.StringIO()
+        qr = qrcode.QRCode(
+                version=1,
+                error_correction=qrcode.constants.ERROR_CORRECT_L,
+                box_size=5,
+                border=1,
+            )
+        qr.add_data(nom)
+        qr.make(fit=True)
+
+        img = qr.make_image()
+        img.save(data, 'png')
+        send_file(StringIO.StringIO(data.getvalue()), mimetype='image/png')
+        flash('This is your ticket %s!'% nom)
+        return render_template('ticket.html')
+
 
 if __name__ == '__main__':
     app.run()

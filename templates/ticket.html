@@ -8,6 +8,7 @@
         <center><p><strong>{{ message }}</strong></p></center>
     </div> <br />
 {% endfor %} 
+    <img id="qrcode_img" src="/tqr/test" onload="update_qr_img();" />
             <span class="glyphicon glyphicon-paperclip"></span></h1>
 	<p><span class="glyphicon glyphicon-lock"></span> {finalticket_paragraph}</p>
 	<a href ="#" class="btn btn-default">Print Ticket <span class="glyphicon glyphicon-print"></span></a>
