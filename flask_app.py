@@ -23,6 +23,18 @@ time.tzset()
 def itisnow():
     return str(datetime.datetime.fromtimestamp(int(time.time())).strftime('%m-%d-%y @ %H:%M:%S EDT'))
 
+#DATABASE = '/foodbase/Rticket.db'
+#def real_db():
+#    db = getattr(g, '_database', None)
+#    if db is None:
+#        db = g._database = connect_to_database()
+#    return db
+
+#@app.teardown_appcontext
+#def close_connection(exception):
+#    db = getattr(g, '_database', None)
+#    if db is not None:
+#        db.close()
 now = itisnow()
 wigs = ['Aeteon','Melissa','Jeri','Sandy','RealMaster','Lisa']
 passpalabras = ['rtmouse01','realticketmouse','wolfcreekamp','00001111','psalms3']
@@ -37,7 +49,7 @@ class MyForm(Form):
 
 @app.route('/')
 def home():
-    return render_template('home.html') 
+    return render_template('home.html')
 
 @app.route('/realticket')
 def owelcome():
@@ -62,7 +74,6 @@ def logout():
 @app.route('/hello')
 @login_required
 def ohello():
-    import flask_app
     reload(flask_app)
     flash('The current Timestamp is: %s'% now)
     return render_template('hello.html')
@@ -150,21 +161,11 @@ def tqr():
         tom = request.form['ticket']
         qom = request.form['tquantity']
         pom = request.form['cpin']
-        som = request.form['dsignature']
-        data = StringIO.StringIO()
-        qr = qrcode.QRCode(
-                version=1,
-                error_correction=qrcode.constants.ERROR_CORRECT_L,
-                box_size=5,
-                border=1,
-            )
-        qr.add_data(nom)
-        qr.make(fit=True)
-
-        img = qr.make_image()
-        img.save(data, 'png')
-        send_file(StringIO.StringIO(data.getvalue()), mimetype='image/png')
-        flash('This is your ticket %s!'% nom)
+        som = "boo"
+        if bool(som) == True:
+            flash('This is your ticket %s!\n %s\n %s \n %s \n %s \n %s \n %s \n %s \n %s \n %s \n\r %s'% (nom, hom, zom, fom, eom, com, vom, tom, qom, pom, som))
+        else:
+            flash('You didn\'t sign the form.')
         return render_template('ticket.html')
 
 
