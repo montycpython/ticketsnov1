@@ -12,6 +12,7 @@ from PIL import Image
 import urllib2
 import StringIO
 import flask_app
+import sqlite3 as brain
 
 SECRET_KEY = '4f7cae8cd1736360b612454ba772a1a9ca113259ff03385f26c6b59ca03052f5'
 
