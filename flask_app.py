@@ -12,29 +12,30 @@ from PIL import Image
 import urllib2
 import StringIO
 import flask_app
+import sqlite3 as brain
 
 SECRET_KEY = '4f7cae8cd1736360b612454ba772a1a9ca113259ff03385f26c6b59ca03052f5'
 
 RECAPTCHA_PUBLIC_KEY = '6LdZ8PwSAAAAAER1_ZyOneJftFrSyDnS21RMzpmy'
 RECAPTCHA_PRIVATE_KEY = '6LdZ8PwSAAAAAJhsiEWtsW4qcwSjQmOIfo5FnJg'
-
+nom = None
+hom = None
+zom = None
+fom = None
+eom = None
+com = None
+vom = None
+tom = None
+qom = None
+pom = None
+som = None
 os.environ['TZ']='America/Detroit'
 time.tzset()
 def itisnow():
     return str(datetime.datetime.fromtimestamp(int(time.time())).strftime('%m-%d-%y @ %H:%M:%S EDT'))
 
-#DATABASE = '/foodbase/Rticket.db'
-#def real_db():
-#    db = getattr(g, '_database', None)
-#    if db is None:
-#        db = g._database = connect_to_database()
-#    return db
+DATABASE = '/home/realmaster/mysite/Rticket.db'
 
-#@app.teardown_appcontext
-#def close_connection(exception):
-#    db = getattr(g, '_database', None)
-#    if db is not None:
-#        db.close()
 now = itisnow()
 wigs = ['Aeteon','Melissa','Jeri','Sandy','RealMaster','Lisa']
 passpalabras = ['rtmouse01','realticketmouse','wolfcreekamp','00001111','psalms3']
@@ -43,9 +44,13 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.debug = True
 
-class MyForm(Form):
-    username = TextField('Username')
-    recaptcha = RecaptchaField()
+def real_db():
+    mon = brain.connect(app.config['DATABASE'])
+    cur = mon.cursor()
+    cur.execute('''insert into rtcustomer (cname, caddress, zcode, cphone, cemail, cccnumber, ccvc, ticket, cquantity, cpin)
+    values (?,?,?,?,?,?,?,?,?,?) ''',(nom, hom, zom, fom, eom, com, vom, tom, qom, pom))
+    mon.commit()
+    mon.close()
 
 @app.route('/')
 def home():
@@ -107,7 +112,7 @@ def qr():
             error_correction=qrcode.constants.ERROR_CORRECT_L,
             box_size=5,
             border=1,
-        )
+            )
     qr.add_data(request.args.get("text"))
     qr.make(fit=True)
 
@@ -139,17 +144,7 @@ def realticket():
 @app.route('/tqr', methods=['GET','POST'])
 @login_required
 def tqr():
-    nom = None
-    hom = None
-    zom = None
-    fom = None
-    eom = None
-    com = None
-    vom = None
-    tom = None
-    qom = None
-    pom = None
-    som = None
+    global nom, hom, zom, fom, eom, com, vom, tom, qom, pom, som
     if request.method == 'POST':
         nom = request.form['cname']
         hom = request.form['caddress']
@@ -162,11 +157,17 @@ def tqr():
         qom = request.form['tquantity']
         pom = request.form['cpin']
         som = "boo"
+        real_db()
         if bool(som) == True:
-            flash('This is your ticket %s!\n %s\n %s \n %s \n %s \n %s \n %s \n %s \n %s \n %s \n\r %s'% (nom, hom, zom, fom, eom, com, vom, tom, qom, pom, som))
+                flash('This is your ticket %s!\n %s\n %s \n %s \n %s \n %s \n %s \n %s \n %s \n %s \n\r %s'% (nom, hom, zom, fom, eom, com, vom, tom, qom, pom, som))
         else:
             flash('You didn\'t sign the form.')
         return render_template('ticket.html')
+
+@app.route('/createevent', methods=['GET','POST'])
+@login_required
+def cevent():
+    return render_template('operatorevents.html')
 
 
 if __name__ == '__main__':
